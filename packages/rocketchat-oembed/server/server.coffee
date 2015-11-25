@@ -82,6 +82,7 @@ getUrlContent = (urlObj, redirectCount = 5, callback) ->
 	request.end()
 
 OEmbed.getUrlMeta = (url, withFragment) ->
+	console.log('fetching url', url)
 	getUrlContentSync = Meteor.wrapAsync getUrlContent
 
 	urlObj = URL.parse url
@@ -124,6 +125,10 @@ OEmbed.getUrlMeta = (url, withFragment) ->
 
 	headers = undefined
 
+	absoluteUrl = Meteor.absoluteUrl('')
+	if url.lastIndexOf(absoluteUrl, 0) == 0 #and Meteor.settings.public.sandstorm
+		url = url.slice(absoluteUrl)
+		content.parsedUrl = URL.parse url
 	if content?.headers?
 		headers = {}
 		for header, value of content.headers

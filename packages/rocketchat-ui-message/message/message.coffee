@@ -79,6 +79,7 @@ Template.message.onCreated ->
 
 	@body = do ->
 		messageType = RocketChat.MessageTypes.getType(msg)
+		console.log messageType, msg
 		if messageType?.render?
 			return messageType.render(message)
 		else if messageType?.template?

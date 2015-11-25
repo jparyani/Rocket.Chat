@@ -1,3 +1,4 @@
-if Meteor.settings.public.sandstorm
-	Meteor.absoluteUrl = (path) ->
-		'/' + path
+# if Meteor.settings.public.sandstorm
+# Meteor._absoluteUrl = Meteor._absoluteUrl || Meteor.absoluteUrl
+# Meteor.absoluteUrl = (path) ->
+# 	'/' + path
